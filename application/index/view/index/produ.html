@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/index/">
+    <title>全部产品</title>
+    <link href="/index/css/produ.css"rel="stylesheet">
+    <link href="/index/css/share.css"rel="stylesheet">
+    <script src="/index/js/jquery-1.12.3.js"></script>
+</head>
+<style type="text/css">
+        .text-l{
+            text-align: center;
+        }
+        .pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}
+        .pagination li{margin:0px 10px; border:1px solid #e6e6e6;padding: 3px 8px;display: inline-block;}
+        .pagination .active{background-color: #dd1a20;color: #fff;}
+        .pagination .disabled{color:#aaa;}
+
+        #footer{
+            margin-top: 100px;
+        }
+        #bd{
+            height: 600px;
+        }
+        #rec-right{
+            height: 650px;
+        }
+       
+    </style>
+    
+<body>
+<!--顶部导航-->
+<div class="headr">
+    <div class="heard-con">
+         <img src="/index/images/logo.jpg" style="margin-top: 7px;float: left;position: absolute" width="100px" height="100px">
+        <div class="headr-nav">
+            <ul>
+                <li><a href="{:url('index/index/index')}">首页</a> </li>
+                <li><a href="{:url('index/index/hot')}">蔬果热卖</a> </li>
+                <li><a href="{:url('index/index/produ')}"style="color: #4AB344"><span style="color: #4AB344">全部产品</span></a> </li>
+                <li><a href="{:url('index/index/consult')}">最新资讯</a></li>
+                <li><a href="{:url('index/index/touch')}">联系我们</a> </li>
+            </ul>
+            <div class="sptopfoot">
+                <div class="spbottom"  >
+                </div>
+            </div>
+        </div>
+        <div class="headr-right">
+            <i class="iconfont" style="font-size: 16px;margin-right: 10px">&#xe7d5;</i>
+            我的购物车 ∨
+            <div class="hr-car">
+                <i class="iconfont"style="font-size: 40px;margin-right: 10px">&#xe633;</i>
+                您的购物车内暂时没有任何产品。
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部导航结束-->
+<!--banner图片-->
+<div class="her-banner">
+
+</div>
+<!--banner图片结束-->
+<div class="content">
+    <!--产品推荐开始-->
+    <div class="recommand clear">
+        <div class="rec-cont clear">
+            <div class="rec-left">
+                <div class="classily">
+                    <div class="cltop">
+                        <p>产品分类</p>
+                    </div>
+                    <div class="cltcon">
+                        <p><a href="#">国产水果</a> </p>
+                        <p><a href="#"> 进口水果</a></p>
+                        <p style="border-bottom:0px dashed #999999;"><a href="#">新鲜时蔬</a></p>
+                    </div>
+
+                </div>
+                <div class="service">
+                    <div class="cltop">
+                        <p>在线客服</p>
+                    </div>
+                    <div class="sercon">
+                       <div class="qqs">
+                           <p><a hidefocus="true" href="#">
+                               <span class="serOnline-img0 qqImg0">&nbsp;</span>蜜桃
+                           </a>
+                           </p>
+                           <P><a hidefocus="true" href="#">
+                               <span class="serOnline-img0 qqImg0">&nbsp;</span>芒果
+                           </a>
+                           </P>
+                       </div>
+                        <div class="tims">
+                            <div class="marBL-10">
+                                <span class="worktime-header-img">&nbsp;</span>
+                                <span class="serWorkTimeText"><b>工作时间</b></span>
+                            </div>
+                            <div class="serOnline-list-v "><span>周一至周五 ：8:30-17:30</span></div>
+                            <div class="serOnline-list-v lastData"><span>周六至周日 ：9:00-17:00</span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="rec-right" id="rec-right">
+                <div class="bd" id="bd">
+                    <div class="bd1"  style="display: block">
+                    <?php foreach ($data as $key => $value) { ?>                    
+                        <div class="rcr">
+                            <div class="rcr-top">
+                                <a href="{:url('index/index/detail')}?id=<?php echo $value['goods_id'] ?>"><img src="{$value['goods_img']}" width="100%"></a>
+                            </div>
+                            <div class="rcr-bot">
+                                <div class="rb-top">
+                                    <?php echo $value['goods_name'] ?>
+                                </div>
+                                <div class="second_P">
+                                    <span class="fk-prop">￥</span>
+                                        <span class="fk-prop-price"><?php echo $value['goods_price'] ?>
+                                            <span class="fk-prop-p">.00</span>
+                                        </span>
+                                    <span class="second_Marketprice">￥ <?php echo $value['goods_price_old'] ?></span>
+                                </div>
+                                <div class="buy">
+                                    <a class="second_mallBuy" href="{:url('index/index/detail')}?id=<?php echo $value['goods_id'] ?>">
+                                        <span style="color: white;">购买</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>               
+        </div>
+
+    </div>
+        <center><span id="ye"><?php echo $data->render() ?></span></center>
+    <!--产品推荐结束-->
+</div>
+<!--底部-->
+<div class="footer" id="footer">
+    <div class="ft-con">
+        <div class="ft-top">
+            <img src="images/fot-1.jpg">
+        </div>
+        <div class="ft-bo">
+            <div class="ft-b">
+                <h3>服务保障</h3>
+                <p>正品保证</p>
+                <p>7天无理由退换</p>
+                <p>退货返运费</p>
+                <p>7X15小时客户服务</p>
+
+            </div>
+            <div class="ft-b">
+                <h3>支付方式</h3>
+                <p>公司转账</p>
+                <p>货到付款</p>
+                <p>在线支付</p>
+                <p>分期付款</p>
+
+            </div>
+            <div class="ft-b">
+                <h3>商家服务</h3>
+                <p>商家入驻</p>
+                <p>培训中心</p>
+                <p>广告服务</p>
+                <p>服务市场</p>
+
+            </div>
+            <div class="ft-b">
+                <h3>服务保障</h3>
+                <p>免运费</p>
+                <p>海外配送</p>
+                <p>EMS</p>
+                <p>211限时达</p>
+
+            </div>
+
+        </div>
+        <div class="banq">
+            <p>©2016 果然新鲜 版权所有</p>
+            <p>手机版 | 本站使用<span><img src="images/ft.jpg"></span>凡科建站搭建 | 管理登录</p>
+        </div>
+
+    </div>
+</div>
+</body>
+<script src="js/produ.js"></script>
+</html>
